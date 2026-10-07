@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.7.4",
+  "modified": "2026-10-07T04:27:15Z",
+  "published": "2026-10-07T04:27:15Z",
+  "details": "Version 2.21.0 loads an obfuscated lib/config.js when the package is imported. The embedded payload decrypts saved Chromium browser passwords, collects browser wallet-extension data, and uploads the collected files to hard-coded endpoints at 167.88.172.33 on ports 8085 and 8086. A Socket.IO payload connects to port 8087 and accepts commands to open and control interactive shells. These undisclosed credential-theft and remote-control capabilities are unrelated to the advertised logging functionality.",
+  "affected": [
+    {
+      "package": {
+        "ecosystem": "npm",
+        "name": "hardhat-promised"
+      },
+      "versions": [
+        "2.21.0"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "type": "PACKAGE",
+      "url": "https://registry.npmjs.org/hardhat-promised/-/hardhat-promised-2.21.0.tgz"
+    }
+  ],
+  "credits": [
+    {
+      "name": "smiling-hyena",
+      "type": "FINDER",
+      "contact": [
+        "smilinghyena4@gmail.com"
+      ]
+    }
+  ],
+  "database_specific": {
+    "iocs": {
+      "ips": [
+        "167.88.172.33"
+      ],
+      "urls": [
+        "http://167.88.172.33:8085/upload",
+        "http://167.88.172.33:8086/upload",
+        "http://167.88.172.33:8087",
+        "http://167.88.172.33:8087/api/log"
+      ],
+      "files": [
+        {
+          "paths": [
+            "lib/config.js"
+          ],
+          "source": "PACKAGE_ARCHIVE",
+          "digests": {
+            "sha256": "7e4c6d76f1d845f752e37876a2d3f773996719f33c2d1c282e0a84b04444efeb"
+          },
+          "note": "Obfuscated code loaded by index.js; embeds credential theft and remote shell payloads."
+        }
+      ]
+    }
+  }
+}
